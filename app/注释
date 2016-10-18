@@ -1,0 +1,7 @@
+
+dataBinding的基本原理：
+
+开始编译-------》处理layout文件--------》解析表达式---------》java编译--------------》解析依赖----------》找到setter
+
+
+生成的Activity的Binding类的目录在Project目录下，app--》intermediates--->classes--->debug--->报名--->databindingdemo这个目录
