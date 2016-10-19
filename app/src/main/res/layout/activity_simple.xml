@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="employee"
+            type="com.baohua.databingdemo.model.Employee" />
+
+        <variable
+            name="presenter"
+            type="com.baohua.databingdemo.activity.SimpleBindingActivity.Presenter" />
+
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.baohua.databingdemo.activity.MainActivity">
+
+        <ViewStub
+            android:id="@+id/id_view_stub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout="@layout/view_stub" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="@{employee.age>14?employee.name:employee.name}" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:onClick="@{() -> presenter.onClickListenerBinding(employee)}"
+            android:text="@{employee.name}" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{presenter.onClick}"
+            android:visibility="@{employee.fired ?View.GONE:View.VISIBLE}" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onTextChanged="@{presenter.onTextChanged}" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text='@{employee.mapWord["yao"]}' />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text='@{employee.mapWord["bao"]}' />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text='@{employee.mapWord["hua"]}' />
+
+        <include
+            layout="@layout/include_demo"
+            bind:employee="@{employee}" />
+    </LinearLayout>
+
+
+</layout>
