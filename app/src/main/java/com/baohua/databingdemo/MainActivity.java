@@ -23,8 +23,12 @@ public class MainActivity extends AppCompatActivity {
         binding.setEmployee(employee);
 
         //两种方式设置dataBinding的变量
-        binding.setVariable(BR.presenter, new Presenter());
+        binding.setVariable(com.baohua.databingdemo.BR.presenter, new Presenter());
 //        binding.setPresenter(new Presenter());
+
+
+        //viewstub
+        binding.idViewStub.getViewStub().inflate();
     }
 
 
@@ -32,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
         //事件的方法引用（要求比较严格，方法名必须与原ui的事件监听一致）
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             employee.setName(s + "");
-            binding.setEmployee(employee);
+            employee.setFired(!employee.isFired());
+//            binding.setEmployee(employee);
         }
 
         //事件的方法引用（要求比较严格，方法名必须与原ui的事件监听一致）

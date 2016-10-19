@@ -5,3 +5,6 @@ dataBinding的基本原理：
 
 
 生成的Activity的Binding类的目录在Project目录下，app--》intermediates--->classes--->debug--->报名--->databindingdemo这个目录
+
+Observable  :Java中，model的数据源跟新后并不会及时更新UI，所以出现了Observable这个类。
+用法 ：写model的时候继承自Observable 类，给需要及时更新的字段添加@Bind注解
